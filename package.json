@@ -1,0 +1,12 @@
+{
+  "name": "fetch-memory-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node json-server.mjs",
+    "test": "node index.mjs"
+  },
+  "author": "azu",
+  "license": "MIT"
+}
