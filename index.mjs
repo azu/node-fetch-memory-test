@@ -4,8 +4,9 @@ const testFetch = async () => {
     return fetch(url)
         .then(async res => {
             if (!res.ok) {
-                const resText = await res.text();
-                throw new Error(`Failed to fetch ${url}: ${res.status} ${res.statusText} ${resText}`);
+                // const resText = await res.text();
+                // throw new Error(`Failed to fetch ${url}: ${res.status} ${res.statusText} ${resText}`);
+                throw new Error();
             }
             return res.json();
         });
