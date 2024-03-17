@@ -6,10 +6,10 @@ const testFetch = async () => {
             // this pattern will retain the response body in memory until garbage collection
             if (!res.ok) {
                 throw new Error();
+                // For avoiding memory increasing, we need to consume the response body explicitly
+                // const resText = await res.text();
+                // throw new Error(`Failed to fetch ${url}: ${res.status} ${res.statusText} ${resText}`);
             }
-            // For avoiding memory increasing, we need to consume the response body explicitly
-            // const resText = await res.text();
-            // throw new Error(`Failed to fetch ${url}: ${res.status} ${res.statusText} ${resText}`);
             return res.json();
         });
 }
