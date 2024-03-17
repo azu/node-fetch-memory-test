@@ -3,11 +3,13 @@ const testFetch = async () => {
     const url = 'http://localhost:3000/index.json';
     return fetch(url)
         .then(async res => {
+            // this pattern will retain the response body in memory until garbage collection
             if (!res.ok) {
-                // const resText = await res.text();
-                // throw new Error(`Failed to fetch ${url}: ${res.status} ${res.statusText} ${resText}`);
                 throw new Error();
             }
+            // For avoiding memory increasing, we need to consume the response body explicitly
+            // const resText = await res.text();
+            // throw new Error(`Failed to fetch ${url}: ${res.status} ${res.statusText} ${resText}`);
             return res.json();
         });
 }
