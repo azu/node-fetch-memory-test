@@ -1,6 +1,6 @@
-# Node.js `fetch()` memory leak test
+# Node.js `fetch()` garbage collection test
 
-Node.js `fetch()` will cause memory leak if the response body is not consumed or cancelled.
+Node.js `fetch()` will cause memory leak-like behavior if the response body is not consumed or cancelled.
 
 ```js
 const testFetch = async () => {
@@ -16,6 +16,8 @@ const testFetch = async () => {
         });
 }
 ```
+
+This increased memory will be released by garbage collection, but it is not deterministic and may cause stalls or deadlocks.
 
 ## Test
 
