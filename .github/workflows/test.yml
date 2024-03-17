@@ -1,0 +1,26 @@
+name: test
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    name: "Test on Node.js ${{ matrix.node-version }} OS: ${{matrix.os}}"
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix:
+        os: [ macos-latest, windows-latest, ubuntu-latest ]
+        node-version: [ 18, 20 ]
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: setup Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Test
+        run: |
+          npm start &
+          npm test
+
